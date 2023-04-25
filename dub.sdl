@@ -1,0 +1,65 @@
+name "sily-gamelib"
+description "Attempt at making gamedev library in D"
+authors "Alisa Lain"
+copyright "Copyright © 2023, Alisa Lain"
+license "MIT"
+
+dependency "sily-gamelib:dlib" version="*"
+dependency "sily-gamelib:bindbc" version="*"
+dependency "sily-gamelib:sdl" version="*"
+dependency "sily-gamelib:sfml" version="*"
+dependency "sily-gamelib:opengl" version="*"
+
+subPackage {
+	name "dlib"
+	dependency "dlib" version="~>1.0.0"
+	targetType "library"
+	targetPath "lib"
+	sourcePaths "dlib/"
+	importPaths "dlib/"
+}
+
+subPackage {
+    name "bindbc"
+    dependency "sily-terminal:logger" version="~>1.0.0"
+    targetType "library"
+    targetPath "lib"
+    sourcePaths "bindbc/"
+    importPaths "bindbc/"
+}
+
+subPackage {
+	name "opengl"
+    dependency "bindbc-opengl" version="~>1.0.5"
+    dependency "sily" version="~>1.4.1"
+    dependency "sily-gamelib:bindbc" version="*"
+	targetType "library"
+	targetPath "lib"
+	sourcePaths "opengl/"
+	versions "GL_46" "GL_ARB"
+	importPaths "opengl/"
+}
+
+subPackage {
+	name "sdl"
+	dependency "bindbc-sdl" version="~>1.1.2"
+    dependency "sily-gamelib:bindbc" version="*"
+	dependency "sily" version="~>1.4.1"
+	targetType "library"
+	targetPath "lib"
+	sourcePaths "sdl/"
+	importPaths "sdl/"
+	versions "SDL_2020"
+}
+
+subPackage {
+	name "sfml"
+    dependency "sily" version="~>1.4.1"
+    dependency "sily-terminal:logger" version="~>1.0.0"
+    dependency "sily-gamelib:bindbc" version="*"
+	dependency "bindbc-sfml" version="~>1.0.2"
+	targetType "library"
+	targetPath "lib"
+	sourcePaths "sfml/"
+	importPaths "sfml/"
+}
